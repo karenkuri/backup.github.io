@@ -20,11 +20,11 @@
         shape-rendering: crispEdges;
     }
 </style>
-
 <body>
 <h1>The World Happiness Score in 2020</h1>
 <script src="d3.js"></script>
 <script src="topojson.v1.min.js"></script>
+<div class='tableauPlaceholder' id='viz1618442245504' style='position: relative'><noscript><a href='#'><img alt='Sheet 1 ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;fi&#47;final1_16184417957580&#47;Sheet1&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='final1_16184417957580&#47;Sheet1' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;fi&#47;final1_16184417957580&#47;Sheet1&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='ja' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1618442245504');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
 
 <script>
     /**
@@ -33,11 +33,11 @@
      * http://bl.ocks.org/msbarry/9911363
      * http://bl.ocks.org/weiglemc/6185069
      *
-    **/
+     **/
 
     const margin = {top: 0, right: 0, bottom: 0, left: 0};
-	const width = 1000 - margin.left - margin.right;
-	const height = 2000 - margin.top - margin.bottom;
+    const width = 1000 - margin.left - margin.right;
+    const height = 2000 - margin.top - margin.bottom;
 
     const color = d3.scaleThreshold()
         .domain([3, 3.5, 4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8])
@@ -49,9 +49,9 @@
         .range([1, 25]);
 
     const svg = d3.select('body')
-			.append('svg')
-			.attr('width', width)
-			.attr('height', height);
+        .append('svg')
+        .attr('width', width)
+        .attr('height', height);
 
     const map = svg
         .append('g')
@@ -60,33 +60,33 @@
     const scatterplot = svg
         .append('g')
         .attr('class', 'scatterplot')
-        .attr("transform", "translate(100,500)");
+        .attr("transform", "translate(50,50)");
 
     const scatterplot2 = svg
         .append('g')
         .attr('class', 'scatterplot2')
-        .attr("transform", "translate(100,690)");
+        .attr("transform", "translate(50,240)");
 
     const scatterplot3 = svg
         .append('g')
         .attr('class', 'scatterplot3')
-        .attr("transform", "translate(100,880)");
+        .attr("transform", "translate(50,430)");
 
     const scatterplot4 = svg
         .append('g')
         .attr('class', 'scatterplot4')
-        .attr("transform", "translate(100, 1070)");
+        .attr("transform", "translate(50, 620)");
 
     const scatterplot5 = svg
         .append('g')
         .attr('class', 'scatterplot5')
-        .attr("transform", "translate(100,1260)");
+        .attr("transform", "translate(50,810)");
 
     const projection = d3.geoMercator()
-			.scale(100)
-			.translate( [width / 2, 1000 / 3.5]);
+        .scale(100)
+        .translate( [width / 2, 1000 / 3.5]);
 
-	const path = d3.geoPath().projection(projection);
+    const path = d3.geoPath().projection(projection);
 
 
     Promise.all([
@@ -94,7 +94,7 @@
         d3.json('world_countries.json')
 
     ]).then(function(data) {
-		const fertilityById = {};
+        const fertilityById = {};
         let happiness = data[0];
         let countries = data[1];
 
@@ -129,9 +129,7 @@
         happiness.forEach(d => { fertilityById[d.id] = +d[fieldSize]; });
         happiness.forEach(d => { fertilityById[d.id] = +d[fieldCountry]; });
         countries.features.forEach( d => { d[fieldColor] = fertilityById[d.id]});
-	
-<div class='tableauPlaceholder' id='viz1618441838369' style='position: relative'><noscript><a href='#'><img alt='Sheet 1 ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;3H&#47;3HFGW26TF&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='path' value='shared&#47;3HFGW26TF' /> <param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;3H&#47;3HFGW26TF&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='ja' /><param name='filter' value='publish=yes' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1618441838369');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
-                 
+
         // setup x
         var xValue = function(d) { return d[Logged];}, // data -> value
             xScale = d3.scaleLinear().range([0, 2000/2-150]), // value -> display
